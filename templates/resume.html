@@ -27,6 +27,58 @@
                         <div class="jumbotron bg-light" style="padding-top:30px;border: solid 1px black;">
                             <h3>Basic Information</h3>
                             <hr><br>
+                            <!-- Name -->
+                            <h5>Name</h5>
+                            {% for i in range(resume_hash['basic']['name']|length) %}
+                            {% for each in resume_hash['basic']['name'][i] %}
+                                {{resume_hash['basic']['name'][i][each]}} <em>({{each}})</em>
+                                <br>
+                            {% endfor %}
+                            {% endfor %}
+                            <br>
+                            <div id="newfield"></div>
+                            <button type="button" class="btn btn-sm btn-success addName">+ Add</button>
+                            <br><br>
+                            <hr><br>
+                            <!-- Email -->
+                            <h5>Email</h5>
+                            {% for i in range(resume_hash['basic']['email']|length) %}
+                            {% for each in resume_hash['basic']['email'][i] %}
+                            {{resume_hash['basic']['email'][i][each]}} <em>({{each}})</em>
+                            <br>
+                            {% endfor %}
+                            {% endfor %}
+                            <br>
+                            <div id="newfield1"></div>
+                            <button type="button" class="btn btn-sm btn-success addEmail">+ Add</button>
+                            <br><br>
+                            <hr><br>
+                            <!-- Phone -->
+                            <h5>Phone</h5>
+                            {% for i in range(resume_hash['basic']['phone']|length) %}
+                            {% for each in resume_hash['basic']['phone'][i] %}
+                            {{resume_hash['basic']['phone'][i][each]}} <em>({{each}})</em>
+                            <br>
+                            {% endfor %}
+                            {% endfor %}
+                            <br>
+                            <div id="newfield2"></div>
+                            <button type="button" class="btn btn-sm btn-success addPhone">+ Add</button>
+                            <br><br>
+                            <hr><br>
+                            <!-- Address -->
+                            <h5>Address</h5>
+                            {% for i in range(resume_hash['basic']['address']|length) %}
+                            {% for each in resume_hash['basic']['address'][i] %}
+                            {{resume_hash['basic']['address'][i][each]}} <em>({{each}})</em>
+                            <br>
+                            {% endfor %}
+                            {% endfor %}
+                            <br>
+                            <div id="newfield3"></div>
+                            <button type="button" class="btn btn-sm btn-success addAddress">+ Add</button>
+                            <br><br>
+                            <hr><br>
                             <!-- <br>
                             <div class="form-group float-right">
                                 <a href="#" class="btn btn-lg btn-success">Next &raquo;</button>
@@ -38,6 +90,16 @@
                         <div class="jumbotron bg-light" style="padding-top:30px;border: solid 1px black;">
                             <h3>Programming Languages</h3>
                             <hr><br>
+                            <h5>Languages</h5>
+                            {% for each in resume_hash['lang'] %}
+                            {{each}} <em>({{resume_hash['lang'][each]}})</em>
+                            <br>
+                            {% endfor %}
+                            <br>
+                            <div id="newfield4"></div>
+                            <button type="button" class="btn btn-sm btn-success addLanguage">+ Add</button>
+                            <br><br>
+                            <hr><br>
                             <!-- <br>
                             <div class="form-group float-right">
                                 <a href="#" class="btn btn-lg btn-success">Next &raquo;</button>
@@ -48,6 +110,13 @@
                     <div class="tab-pane fade" id="v-pills-open" role="tabpanel" aria-labelledby="v-pills-open-tab">
                         <div class="jumbotron bg-light" style="padding-top:30px;border: solid 1px black;">
                             <h3>GitHub</h3>
+                            <hr><br>
+                            Account: {{resume_hash['open']}} <em>({{resume_hash['lang'][each]}})</em>
+                            <br>
+                            <br>
+                            <div id="newfield4"></div>
+                            <button type="button" class="btn btn-sm btn-success addLanguage">+ Add</button>
+                            <br><br>
                             <hr><br>
                             <!-- <br>
                             <div class="form-group float-right">
@@ -93,4 +162,6 @@
             </div>
         </div>
     </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 {% endblock %}

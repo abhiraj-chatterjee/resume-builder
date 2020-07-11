@@ -35,9 +35,8 @@ def allResumes():
     resumes = []
     for collection in doc_ref:
         resumes.append(str(collection.id))
-        # for each in collection.stream():
-        #     return str(each.id)
-    return render_template('all_resumes.html',user=user,resumes=resumes)
+    doc_ref = db.collection('resumes').document(user).get()
+    return render_template('all_resumes.html',user=user,resumes=resumes,resCount=doc_ref.to_dict()['resume_count'])
 
 @app.route('/dashboard/resumes/<template>')
 def resumes(template):
@@ -47,7 +46,8 @@ def resumes(template):
     for collection in doc_ref:
         for each in collection.stream():
             resume_hash[each.id] = each.to_dict()
-    return render_template('resume.html',user=user,resume_hash=resume_hash)
+    doc_ref = db.collection('resumes').document(user).get()
+    return render_template('resume.html',user=user,resume_hash=resume_hash,resCount=doc_ref.to_dict()['resume_count'])
 
 @app.route('/new/resume')
 def newResume():
@@ -158,6 +158,20 @@ def newTemplate(template):
         return render_template(template+"_template.html",user=user,lang=lang,github=data.json(),unis=unis)
 
 # ======== API ========
+
+@app.route('/api/<template>/update/<doc>/<field>',methods=['POST','GET'])
+def updateField(doc,field,template):
+    user = 'abhiraj-chatterjee'
+    time = str(datetime.datetime.now())
+    if doc == 'lang':
+        db.collection('resumes').document(user).collection(template).document(doc).update({
+            request.form['lang'] : time
+        })
+    else:
+        db.collection('resumes').document(user).collection(template).document(doc).update({
+            field: firestore.ArrayUnion([{ time : request.form[field] }])
+        })
+    return redirect(url_for('resumes', template='technical'))
 
 # ======== Config ========
 
