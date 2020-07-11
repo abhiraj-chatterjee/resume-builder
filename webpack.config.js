@@ -1,6 +1,6 @@
 module.exports = {
     entry: {
-        main: "./static/js/SomePage.js",
+        newResume: "./static/js/NewResume.js"
     },
     module: {
         rules: [

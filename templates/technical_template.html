@@ -1,0 +1,185 @@
+{% extends "layout.html" %}
+{% block main %}
+<h1 style="text-align:center;margin-top:80px;">Technical Resume</h1>
+<form method="POST" action="{{ url_for('newTemplate',template='technical') }}">
+    <div class="container" style="margin-top:80px;">
+        <div class="row">
+            <div class="col-3">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-basic-tab" data-toggle="pill" href="#v-pills-basic" role="tab"
+                        aria-controls="v-pills-basic" aria-selected="true">Basic Information</a>
+                    <a class="nav-link" id="v-pills-lang-tab" data-toggle="pill" href="#v-pills-lang" role="tab"
+                        aria-controls="v-pills-lang" aria-selected="false">Programming Languages</a>
+                    <a class="nav-link" id="v-pills-open-tab" data-toggle="pill" href="#v-pills-open" role="tab"
+                        aria-controls="v-pills-open" aria-selected="false">Open Source</a>
+                    <a class="nav-link" id="v-pills-edu-tab" data-toggle="pill" href="#v-pills-edu" role="tab"
+                        aria-controls="v-pills-edu" aria-selected="false">Education</a>
+                    <a class="nav-link" id="v-pills-exp-tab" data-toggle="pill" href="#v-pills-exp" role="tab" aria-controls="v-pills-exp"
+                        aria-selected="false">Experience</a>
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="tab-content" id="v-pills-tabContent">
+                    <!-- Basic Information -->
+                    <div class="tab-pane fade show active" id="v-pills-basic" role="tabpanel" aria-labelledby="v-pills-basic-tab">
+                        <div class="jumbotron bg-light" style="padding-top:30px;border: solid 1px black;">
+                            <h3>Basic Information</h3>
+                            <hr><br>
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" name="name" class="form-control">
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text" name="email" class="form-control">
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" name="phone" class="form-control">
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label>Address</label>
+                                <input type="text" name="address" class="form-control">
+                            </div>
+                            <!-- <br>
+                            <div class="form-group float-right">
+                                <a href="#" class="btn btn-lg btn-success">Next &raquo;</button>
+                            </div> -->
+                        </div>
+                    </div>
+                    <!-- Programming Languages -->
+                    <div class="tab-pane fade" id="v-pills-lang" role="tabpanel" aria-labelledby="v-pills-lang-tab">
+                        <div class="jumbotron bg-light" style="padding-top:30px;border: solid 1px black;">
+                            <h3>Programming Languages</h3>
+                            <hr><br>
+                            {% for each in lang %}
+                            <div class="form-check">
+                                <input class="form-check-input" name="lang" type="checkbox" value="{{each}}">
+                                <label class="form-check-label">{{each}}</label>
+                            </div>
+                            {% endfor %}
+                            <!-- <br>
+                            <div class="form-group float-right">
+                                <a href="#" class="btn btn-lg btn-success">Next &raquo;</button>
+                            </div> -->
+                        </div>
+                    </div>
+                    <!-- Open Source -->
+                    <div class="tab-pane fade" id="v-pills-open" role="tabpanel" aria-labelledby="v-pills-open-tab">
+                        <div class="jumbotron bg-light" style="padding-top:30px;border: solid 1px black;">
+                            <h3>GitHub</h3>
+                            <hr><br>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Account</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" name="gitAccount" style="padding-left:10px;" value="{{ github['html_url'] }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Repositories</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" name="gitRepos" style="padding-left:10px;" value="{{ github['public_repos'] }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Gists</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" name="gitGists" style="padding-left:10px;" value="{{ github['public_gists'] }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Followers</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" name="gitFollowers" style="padding-left:10px;" value="{{ github['followers'] }}">
+                                </div>
+                            </div>
+                            <!-- <br>
+                            <div class="form-group float-right">
+                                <a href="#" class="btn btn-lg btn-success">Next &raquo;</button>
+                            </div> -->
+                        </div>
+                    </div>
+                    <!-- Education -->
+                    <div class="tab-pane fade" id="v-pills-edu" role="tabpanel" aria-labelledby="v-pills-edu-tab">
+                        <div class="jumbotron bg-light" style="padding-top:30px;border: solid 1px black;">
+                            <h3>Recent Education</h3>
+                            <hr><br>
+                            <div class="form-group">
+                                <label>College/University</label>
+                                <select name="college" class="form-control">
+                                    {% for each in unis %}
+                                    <option value="{{each}}">{{each}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label>Graduation Date</label>
+                                <input type="date" name="grad" max="3000-12-31" min="1000-01-01" class="form-control">
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label>Major(s)</label>
+                                <input type="text" name="major" class="form-control">
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label>Minor(s)</label>
+                                <input type="text" name="minor" class="form-control">
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label>Cumulative GPA</label>
+                                <input type="text" name="gpa" class="form-control">
+                            </div>
+                            <!-- <br>
+                            <div class="form-group float-right">
+                                <a href="#" class="btn btn-lg btn-success">Next &raquo;</button>
+                            </div> -->
+                        </div>
+                    </div>
+                    <!-- Experience -->
+                    <div class="tab-pane fade" id="v-pills-exp" role="tabpanel" aria-labelledby="v-pills-exp-tab">
+                        <div class="jumbotron bg-light" style="padding-top:30px;border: solid 1px black;">
+                            <h3>Recent Experience</h3>
+                            <hr><br>
+                            <div class="form-group">
+                                <label>Employer</label>
+                                <input type="text" name="employer" class="form-control">
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label>Position</label>
+                                <input type="text" name="position" class="form-control">
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label>Start Date</label>
+                                <input type="date" name="start" max="3000-12-31" min="1000-01-01" class="form-control">
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label>End Date</label>
+                                <input type="date" name="end" max="3000-12-31" min="1000-01-01" class="form-control">
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea name="descrip" class="form-control" rows="3"></textarea>
+                            </div>
+                            <br>
+                            <div class="form-group float-right">
+                                <button type="submit" class="btn btn-lg btn-success">Create</button>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

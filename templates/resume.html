@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+{% block main %}
+<h1 style="text-align:center;margin-top:80px;">Technical Resume</h1>
+    <div class="container" style="margin-top:80px;">
+        <div class="row">
+            <div class="col-3">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-basic-tab" data-toggle="pill" href="#v-pills-basic"
+                        role="tab" aria-controls="v-pills-basic" aria-selected="true">Basic Information</a>
+                    <a class="nav-link" id="v-pills-lang-tab" data-toggle="pill" href="#v-pills-lang" role="tab"
+                        aria-controls="v-pills-lang" aria-selected="false">Programming Languages</a>
+                    <a class="nav-link" id="v-pills-open-tab" data-toggle="pill" href="#v-pills-open" role="tab"
+                        aria-controls="v-pills-open" aria-selected="false">Open Source</a>
+                    <a class="nav-link" id="v-pills-edu-tab" data-toggle="pill" href="#v-pills-edu" role="tab"
+                        aria-controls="v-pills-edu" aria-selected="false">Education</a>
+                    <a class="nav-link" id="v-pills-exp-tab" data-toggle="pill" href="#v-pills-exp" role="tab"
+                        aria-controls="v-pills-exp" aria-selected="false">Experience</a>
+                    <a class="nav-link" id="v-pills-opt-tab" data-toggle="pill" href="#v-pills-opt" role="tab"
+                        aria-controls="v-pills-opt" aria-selected="false">Optional Information</a>
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="tab-content" id="v-pills-tabContent">
+                    <!-- Basic Information -->
+                    <div class="tab-pane fade show active" id="v-pills-basic" role="tabpanel"
+                        aria-labelledby="v-pills-basic-tab">
+                        <div class="jumbotron bg-light" style="padding-top:30px;border: solid 1px black;">
+                            <h3>Basic Information</h3>
+                            <hr><br>
+                            <!-- <br>
+                            <div class="form-group float-right">
+                                <a href="#" class="btn btn-lg btn-success">Next &raquo;</button>
+                            </div> -->
+                        </div>
+                    </div>
+                    <!-- Programming Languages -->
+                    <div class="tab-pane fade" id="v-pills-lang" role="tabpanel" aria-labelledby="v-pills-lang-tab">
+                        <div class="jumbotron bg-light" style="padding-top:30px;border: solid 1px black;">
+                            <h3>Programming Languages</h3>
+                            <hr><br>
+                            <!-- <br>
+                            <div class="form-group float-right">
+                                <a href="#" class="btn btn-lg btn-success">Next &raquo;</button>
+                            </div> -->
+                        </div>
+                    </div>
+                    <!-- Open Source -->
+                    <div class="tab-pane fade" id="v-pills-open" role="tabpanel" aria-labelledby="v-pills-open-tab">
+                        <div class="jumbotron bg-light" style="padding-top:30px;border: solid 1px black;">
+                            <h3>GitHub</h3>
+                            <hr><br>
+                            <!-- <br>
+                            <div class="form-group float-right">
+                                <a href="#" class="btn btn-lg btn-success">Next &raquo;</button>
+                            </div> -->
+                        </div>
+                    </div>
+                    <!-- Education -->
+                    <div class="tab-pane fade" id="v-pills-edu" role="tabpanel" aria-labelledby="v-pills-edu-tab">
+                        <div class="jumbotron bg-light" style="padding-top:30px;border: solid 1px black;">
+                            <h3>Recent Education</h3>
+                            <hr><br>
+                            <!-- <br>
+                            <div class="form-group float-right">
+                                <a href="#" class="btn btn-lg btn-success">Next &raquo;</button>
+                            </div> -->
+                        </div>
+                    </div>
+                    <!-- Experience -->
+                    <div class="tab-pane fade" id="v-pills-exp" role="tabpanel" aria-labelledby="v-pills-exp-tab">
+                        <div class="jumbotron bg-light" style="padding-top:30px;border: solid 1px black;">
+                            <h3>Recent Experience</h3>
+                            <hr><br>
+                            <div class="form-group float-right">
+                                <button type="submit" class="btn btn-lg btn-success">Create</button>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                    <!-- Optional Information -->
+                    <div class="tab-pane fade" id="v-pills-opt" role="tabpanel"
+                        aria-labelledby="v-pills-opt-tab">
+                        <div class="jumbotron bg-light" style="padding-top:30px;border: solid 1px black;">
+                            <h3>Optional Information</h3>
+                            <hr><br>
+                            <!-- <br>
+                            <div class="form-group float-right">
+                                <a href="#" class="btn btn-lg btn-success">Next &raquo;</button>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
